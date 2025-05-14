@@ -14,7 +14,7 @@ from board import Board
 logger = setup_logger()
 TRACK_LENGTH = 25
 run_simulation_counter = 1 # 模拟次数计数器
-SIMULATION_COUNT = 100000 # 模拟次数
+SIMULATION_COUNT = 1000 # 模拟次数
 
 def create_dangos():
     return [

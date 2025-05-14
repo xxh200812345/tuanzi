@@ -27,12 +27,89 @@
 + **润润加倍**  
 有 **28% 概率**以掷出的步数**前进2次**（即步数翻倍前进）。
 
-## 规则
-+ 一共有以上6种团子
-+ 一共24格，最先走完的胜利，一点前进一格
-+ 第一次roll点决定顺序（不重复）
-+ 第二次roll点决定前进步数（1到3）
-+ 团子可以在同一格子叠加
-+ 下方团子会带上方团子前进
-+ 如果最后一格，存在两个以上的团子，那么最上方胜利
+以下是你的 **团子模拟系统项目结构整理**，包括所有模块的功能说明、组织结构、依赖关系，以及推荐的 `.gitignore`。
 
+
+# 项目结构整理
+
+## ✅ 项目结构总览
+
+```
+tuanzi/
+├── board.py               ← 棋盘类：管理格子、堆叠、团子移动
+├── dango.py               ← 团子类：记录位置、技能、堆叠索引等状态
+├── skill_base.py          ← 技能基类（接口）
+├── skills_impl.py         ← 技能实现类（6种技能逻辑）
+├── simulator.py           ← 主程序入口：执行1000次模拟，输出日志和统计图
+├── plot_result.py         ← 绘图模块：输出胜率统计图（.png）
+├── logger_util.py         ← 日志模块：同时输出到控制台和 logs 文件夹
+├── logs/
+│   ├── dango_simulation.log  ← 运行日志输出（自动生成）
+│   └── dango_result_chart.png← 胜率图输出（自动生成）
+└── .gitignore             ← Git 忽略配置
+```
+
+
+
+## ✅ 各文件功能说明
+
+| 文件名              | 功能描述                                |
+| - | -- |
+| `board.py`       | 提供棋盘类 `Board`，用于存储每一格的团子堆叠信息和移动操作逻辑 |
+| `dango.py`       | 定义 `Dango` 类，包含位置、堆叠索引、技能接口调用等      |
+| `skill_base.py`  | 技能基类接口，定义了技能生命周期中的 4 个方法            |
+| `skills_impl.py` | 每种技能类实现：如收束的未来、令尹之名等，继承自 `Skill`    |
+| `simulator.py`   | 主程序，控制每轮流程、调用技能、输出胜者、记录日志和图表        |
+| `plot_result.py` | 用 `matplotlib` 输出胜率柱状图，保存为 PNG 文件   |
+| `logger_util.py` | 设置日志记录器，输出到控制台和文件                   |
+| `logs/`          | 自动生成的日志和图表目录（由程序自动创建）               |
+| `.gitignore`     | Git 忽略规则配置文件                        |
+
+
+
+## ✅ 推荐 .gitignore 内容
+
+```gitignore
+# Python 相关
+__pycache__/
+*.pyc
+
+# VSCode 或 PyCharm 配置
+.vscode/
+.idea/
+
+# 日志和图表
+logs/
+*.log
+*.png
+
+# 临时运行数据
+*.zip
+*.tmp
+.DS_Store
+```
+
+
+
+## ✅ 项目运行方式
+
+1. 安装依赖：
+
+   ```bash
+   pip install matplotlib
+   ```
+
+2. 运行模拟主程序：
+
+   ```bash
+   python simulator.py
+   ```
+
+3. 结果查看：
+
+   * 胜率图表：`logs/dango_result_chart.png`
+   * 日志记录：`logs/dango_simulation.log`
+
+
+
+是否希望我基于这个结构打包一个全套压缩包供你下载？或者为你生成一个 `README.md` 文件作为项目说明文档？
