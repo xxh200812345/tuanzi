@@ -5,7 +5,7 @@ import os
 
 def setup_logger():
     logger = logging.getLogger("DangoSim")
-    logger.setLevel(logging.INFO)
+    logger.setLevel(logging.DEBUG)
     if not logger.handlers:
         stream_handler = logging.StreamHandler()
         stream_formatter = logging.Formatter("[%(asctime)s] %(levelname)s - %(message)s", datefmt="%H:%M:%S")
