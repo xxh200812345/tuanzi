@@ -137,6 +137,3 @@ logs/
    * 胜率图表：`logs/dango_result_chart.png`
    * 日志记录：`logs/dango_simulation.log`
 
-
-
-是否希望我基于这个结构打包一个全套压缩包供你下载？或者为你生成一个 `README.md` 文件作为项目说明文档？
